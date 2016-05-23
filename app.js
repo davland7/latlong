@@ -5,7 +5,8 @@ var info = document.getElementById('alert');
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 15,
-    center: {lat: 43.71839831777034, lng: -79.37805800000001}
+    center: {lat: 43.71839831777034, lng: -79.37805800000001},
+		scrollwheel: false
   });
 
 	var search = document.getElementById('search');
