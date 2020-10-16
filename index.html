@@ -170,7 +170,7 @@
             var longitude = e.coords.longitude;
             var latitude = e.coords.latitude;
 
-            axios.post('https://api.mapbox.com/geocoding/v5/mapbox.places/' + longitude + ',' + latitude + '.json?types=poi&access_token=' + mapboxgl.accessToken, {headers: {"Access-Control-Allow-Origin": "*"}})
+            axios.post('https://api.mapbox.com/geocoding/v5/mapbox.places/' + longitude + ',' + latitude + '.json?types=poi&access_token=' + mapboxgl.accessToken, {}, {headers: {"Access-Control-Allow-Origin": "*"}})
               .then(function (response) {
                 console.log(response);
               })
