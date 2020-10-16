@@ -135,25 +135,6 @@
 
         map.addControl(new mapboxgl.NavigationControl(), 'top-right');
 
-        var geolocate = new mapboxgl.GeolocateControl({
-            positionOptions: {
-                enableHighAccuracy: true
-            },
-            trackUserLocation: true
-        });
-
-        geolocate.on('geolocate', function(e) {
-            var longitude = e.coords.longitude;
-            var latitude = e.coords.latitude;
-
-            var marker = new mapboxgl.Marker().setLngLat([longitude, latitude]).addTo(map);
-
-            document.getElementById("lng").value = longitude;
-            document.getElementById("lat").value = latitude;
-        });
-
-        document.getElementById("geocoder").appendChild(geolocate.onAdd(map));
-
         var geocoder = new MapboxGeocoder({
             accessToken: mapboxgl.accessToken,
             mapboxgl: mapboxgl,
@@ -175,7 +156,33 @@
             document.getElementById("lng").value = longitude;
             document.getElementById("lat").value = latitude;
         });
+        
+                var geolocate = new mapboxgl.GeolocateControl({
+            positionOptions: {
+                enableHighAccuracy: true
+            },
+            trackUserLocation: true
+        });
 
+        geolocate.on('geolocate', function(e) {
+            var longitude = e.coords.longitude;
+            var latitude = e.coords.latitude;
+            
+            geocoder.mapboxClient
+              .geocodeReverse({
+                latitude: latitude, 
+                longitude: longitude
+              }, function(err, res) {
+                console.log(err, res)
+            });
+
+            var marker = new mapboxgl.Marker().setLngLat([longitude, latitude]).addTo(map);
+
+            document.getElementById("lng").value = longitude;
+            document.getElementById("lat").value = latitude;
+        });
+
+        document.getElementById("geocoder").appendChild(geolocate.onAdd(map));
         document.getElementById("geocoder").appendChild(geocoder.onAdd(map));
     </script>
 </body>
