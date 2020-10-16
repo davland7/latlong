@@ -164,10 +164,14 @@
             },
             trackUserLocation: true
         });
-
-        geolocate.reverseQuery([-71.141832, 46.4918725000001], function(err, res) {
-            console.log(err, res);
-        });
+        
+        geocoder.mapboxClient
+          .geocodeReverse({
+            latitude: 46.4918725000001, 
+            longitude: user_coordinates.lng
+          }, function(err, res) {
+            console.log(err, res)
+          });
 
         geolocate.on('geolocate', function(e) {
             var longitude = e.coords.longitude;
