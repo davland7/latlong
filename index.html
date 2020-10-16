@@ -121,7 +121,7 @@
 
     <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
-    <script src="https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" integrity="sha512-quHCp3WbBNkwLfYUMd+KwBAgpVukJu5MncuQaWXgCrfgcxCJAq/fo+oqrRKOj+UKEmyMCG3tb8RB63W+EmrOBg==" crossorigin="anonymous"></script>
     <script>
         // TO MAKE THE MAP APPEAR YOU MUST
         // ADD YOUR ACCESS TOKEN FROM
@@ -165,30 +165,18 @@
             },
             trackUserLocation: true
         });
-        
-        geocoder.mapboxClient
-          .geocodeReverse({
-            latitude: 46.4918725000001, 
-            longitude: user_coordinates.lng
-          }, function(err, res) {
-            console.log(err, res)
-          });
-        
-        
-        
-        var mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
-        mapboxClient.geocoding
-          .reverseGeocode({
-            query: "-58.5003038, -34.5741957"
-          })
-          .send()
-          .then(function(response) {
-            console.log(response);
-          });
 
         geolocate.on('geolocate', function(e) {
             var longitude = e.coords.longitude;
             var latitude = e.coords.latitude;
+
+            axios.post('https://api.mapbox.com/geocoding/v5/mapbox.places/' + longitude + ',' + latitude + '.json?types=poi&access_token=' + mapboxgl.accessToken)
+              .then(function (response) {
+                console.log(response);
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
 
             var marker = new mapboxgl.Marker().setLngLat([longitude, latitude]).addTo(map);
 
