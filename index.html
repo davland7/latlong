@@ -169,7 +169,7 @@
             var longitude = e.coords.longitude;
             var latitude = e.coords.latitude;
             
-            geocoder.reverseQuery([longitude, latitude], function(err, res) {
+            geocoder.geocodeReverse([longitude, latitude], function(err, res) {
                 console.log(err, res);
             });
 
