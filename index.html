@@ -165,13 +165,13 @@
             trackUserLocation: true
         });
 
-        var mapboxClient = new MapboxClient(mapboxgl.accessToken);
+        
 
         geolocate.on('geolocate', function(e) {
             var longitude = e.coords.longitude;
             var latitude = e.coords.latitude;
             
-            
+            var mapboxClient = new MapboxClient(mapboxgl.accessToken);
             mapboxClient.geocodeReverse(
               { latitude: latitude, longitude: latitude},
               { types: 'address', limit: 3 },
