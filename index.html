@@ -157,7 +157,7 @@
             document.getElementById("lat").value = latitude;
         });
         
-                var geolocate = new mapboxgl.GeolocateControl({
+        var geolocate = new mapboxgl.GeolocateControl({
             positionOptions: {
                 enableHighAccuracy: true
             },
@@ -168,12 +168,8 @@
             var longitude = e.coords.longitude;
             var latitude = e.coords.latitude;
             
-            geocoder.mapboxClient
-              .geocodeReverse({
-                latitude: latitude, 
-                longitude: longitude
-              }, function(err, res) {
-                console.log(err, res)
+            geocoder.reverseQuery([longitude, latitude], function(err, res) {
+                console.log(err, res);
             });
 
             var marker = new mapboxgl.Marker().setLngLat([longitude, latitude]).addTo(map);
