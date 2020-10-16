@@ -14,16 +14,23 @@
     <title>Find latitude and longitude</title>
     <style>
       * { box-sizing: border-box; }
+      html, body {height: 100%;}
       body {
-        width: 100%;
-        margin: 0 auto;
-        padding: 0 20px;
-
-        font-family: "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          max-width: 768px;
+          margin: 0 auto;
+          padding: 0 20px;
+          font-family: "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
+          font-size: 16px;
       }
 
       h1 {
         margin: 28px 0 0;
+        font-size: 1em;
       }
 
       .ad { width: 320px; height: 50px; margin: 28px 0 0; }
@@ -85,16 +92,8 @@
       }
         
       @media screen and (min-width: 768px) {
-        html, body {height: 100%;}
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            max-width: 768px;
-        }
-          
+        h1 { font-size: 2em; }
+
         .ad { width: 728px; height: 90px;}
       }
     </style>
@@ -105,7 +104,7 @@
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <!-- Find latitude and longitude -->
         <ins class="adsbygoogle"
-             style="display:inline-block;width:728px;height:90px"
+             style="display:inline-block;"
              data-ad-client="ca-pub-9160095348088680"
              data-ad-slot="8111056636"></ins>
         <script>
