@@ -165,20 +165,14 @@
             trackUserLocation: true
         });
 
-        
+        geocoder.reverseQuery([-71.141832, 46.4918725000001], function(err, res) {
+            console.log(err, res);
+        });
 
         geolocate.on('geolocate', function(e) {
             var longitude = e.coords.longitude;
             var latitude = e.coords.latitude;
-            
-            var mapboxClient = new MapboxClient(mapboxgl.accessToken);
-            mapboxClient.geocodeReverse(
-              { latitude: latitude, longitude: latitude},
-              { types: 'address', limit: 3 },
-              function(err, res) {
-              console.log(err, res);
-            });
-            
+
             var marker = new mapboxgl.Marker().setLngLat([longitude, latitude]).addTo(map);
 
             document.getElementById("lng").value = longitude;
