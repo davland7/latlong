@@ -174,7 +174,7 @@
           accessToken: mapboxgl.accessToken 
         });
 
-        geolocate.on('geolocate', function(e) {
+        geolocate.on('trackuserlocationend', function(e) {
             var longitude = e.coords.longitude;
             var latitude = e.coords.latitude;
 
