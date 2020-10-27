@@ -33,6 +33,8 @@
         margin: 28px 0 0;
         font-size: 1em;
       }
+        
+      .ad { width: 320px; height: 50px; margin: 28px 0 0; }
 
       .map {
         width: 100%;
@@ -92,12 +94,25 @@
         
       @media screen and (min-width: 768px) {
         h1 { font-size: 2em; }
+
+        .ad { width: 728px; height: 90px; }
       }
     </style>
-    <script data-ad-client="ca-pub-9160095348088680" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 <body>
     <h1>Find latitude and longitude</h1>
+    
+    <div class="ad">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- Find latitude and longitude -->
+        <ins class="adsbygoogle ad"
+             data-ad-client="ca-pub-9160095348088680"
+             data-ad-slot="8111056636"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
     <div id="geocoder" class="geocoder"></div>
     <div id="map" class="map"></div>
 
